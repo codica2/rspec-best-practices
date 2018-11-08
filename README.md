@@ -1,6 +1,15 @@
 # Rspec Samples
 
-![alt text](https://images.hgmsites.net/med/adac-50mph-crash-test-shows-weaknesses-even-in-top-rated-cars_100207633_m.jpg)
+![Rspec Samples](https://images.hgmsites.net/med/adac-50mph-crash-test-shows-weaknesses-even-in-top-rated-cars_100207633_m.jpg)
+
+Quality of the end product is one of the main indicators of successful work, 
+that’s why at [![Codica logo](https://www.codica.com/assets/images/logo/logo.svg)](https://www.codica.com) we have a rule: write tests for each PR and keep tests coverage higher than 80%. For Ruby On Rails projects, we use rspec and capybara to test our apps.
+
+There are several main testing methods:
+
+   - **Model** specs - used for testing models and other classes;
+   - **Request** specs - used for testing controller actions with a server running; especially useful for API coverage;
+   - **Feature** specs - these specs represent user's interaction with the website.
 
 ## Testing Environment Configuration
 [Gemfile example](Gemfile)
