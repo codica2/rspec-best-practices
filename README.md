@@ -3,9 +3,9 @@
 ![Rspec Samples](https://images.hgmsites.net/med/adac-50mph-crash-test-shows-weaknesses-even-in-top-rated-cars_100207633_m.jpg)
 
 Quality of the end product is one of the main indicators of successful work, 
-that’s why at [![Codica logo](https://www.codica.com/assets/images/logo/logo.svg)](https://www.codica.com) we have a rule: write tests for each PR and keep tests coverage higher than 80%. For Ruby On Rails projects, we use rspec and capybara to test our apps.
+that’s why at [Codica](https://www.codica.com) we have a rule: write tests for each PR and keep tests coverage higher than 80%. For Ruby On Rails projects, we use rspec and capybara to test our apps.
 
-There are several main testing methods:
+We are using following types of specs:
 
    - **Model** specs - used for testing models and other classes;
    - **Request** specs - used for testing controller actions with a server running; especially useful for API coverage;
@@ -77,3 +77,26 @@ end
 [Examples](spec/factories)
 
 [Documentation](https://github.com/thoughtbot/factory_bot)
+
+## License
+The MIT License (MIT)
+
+Copyright (c) 2018 [![Codica logo](https://www.codica.com/assets/images/logo/logo.svg)](https://www.codica.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
