@@ -88,7 +88,7 @@ end
 [Documentation](https://github.com/thoughtbot/factory_bot)
 
 ## License
-rspec-samples is Copyright © 2015-2018 Codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).
+rspec-best-practices is Copyright © 2015-2018 Codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## About Codica
 
