@@ -2,7 +2,7 @@
 
 ![Rspec Samples](https://images.hgmsites.net/med/adac-50mph-crash-test-shows-weaknesses-even-in-top-rated-cars_100207633_m.jpg)
 
-Quality of the end product is one of the main indicators of successful work, that’s why at [Codica](https://www.codica.com) we have a rule: write tests for each PR and keep tests coverage higher than 80%. For Ruby On Rails projects, we use rspec and capybara to test our apps.
+Quality of the final product is one of the main indicators of successful work, that’s why at [Codica](https://www.codica.com) we have a rule: write tests for each PR and keep tests coverage higher than 80%. For Ruby On Rails projects, we use [RSpec](http://rspec.info/) and capybara to test our apps.
 
 ---
 
@@ -10,11 +10,12 @@ Quality of the end product is one of the main indicators of successful work, tha
 
 - [Testing Environment Configuration](#testing-environment-configuration)
 - [Spec structuring](#spec-structuring)
-- [Types of specs](#types-of-specs)
-  - [Request Spec](#request-spec)
-  - [Model Spec](#model-spec)
-  - [Feature Spec](#feature-spec)  
-- [Factories defination](#factories-defination)
+- [Request Spec](#request-spec)
+- [Model Spec](#model-spec)
+- [Feature Spec](#feature-spec)
+- [Helper Spec](#helper-spec)
+- [Routing Spec](#routing-spec)
+- [Work with Factories](#work-with-factories)
 - [Test Coverage](#test-coverage)
 - [Testing Speed](#testing-speed)
 - [Useful Resources](#useful-resources)
@@ -23,6 +24,11 @@ Quality of the end product is one of the main indicators of successful work, tha
 <!-- /MarkdownTOC -->
 
 ## Testing Environment Configuration
+Rails makes it super easy to write your tests. It starts by producing skeleton test code while you are creating your models and controllers.
+
+In the Rails community, it has become a de facto standard to require the default spec_helper (or an equivalent) in each test file. A typical spec/spec_helper.rb file ends up loading the whole Rails environment, requiring numerous helper files, and setting up various configuration options. All of that, en masse, is more than what any particular test file needs.
+
+Certainly, integration and feature tests depend on the entire Rails environment. ActiveRecord model tests depend on the presence and configuration of a database. These are all good use cases for spec_helper.
 
 [Gemfile example](Gemfile)
 
@@ -53,15 +59,6 @@ context 'when not valid' do
   it { is_expected.to respond_with 422 }
 end
 ```
-
-# Types of specs 
-
-We are using following types of specs:
-
-   - **Model** specs - used for testing models and other classes;
-   - **Request** specs - used for testing controller actions with a server running; especially useful for API coverage;
-   - **Feature** specs - these specs represent user's interaction with the website.
-
 ## Request Spec
 
 Request specs provide a thin wrapper around Rails' integration tests, and are
@@ -87,7 +84,7 @@ end
 
 ## Model Spec
 
-A model spec includes all of the behavior and assertions that it provides, in addition to RSpec's own
+A model spec includes all of the behavior and assertions provided, in addition to RSpec's own
 behavior and expectations.
 
 ```ruby
@@ -121,8 +118,51 @@ through an application.
 
 [Documentation](https://relishapp.com/rspec/rspec-rails/docs/feature-specs/feature-spec)
 [Capybara cheatsheet](https://gist.github.com/zhengjia/428105)
+## Helper Spec
+Helper specs are marked by ```type: :helper``` or if you have set
+config.infer_spec_type_from_file_location! by placing them in spec/helpers.
 
-## Factories defination
+Helper specs expose a helper object, which includes the helper module being
+specified, the ApplicationHelper module (if there is one) and all of the
+helpers built into Rails. It does not include the other helper modules in
+your app.
+
+```ruby
+require "rails_helper"
+
+RSpec.describe ApplicationHelper, type: :helper do
+  describe "#page_title" do
+    it "returns the default title" do
+      expect(helper.page_title).to eq("RSpec is your friend")
+    end
+  end
+end
+```
+
+[Documentation](https://relishapp.com/rspec/rspec-rails/docs/helper-specs/helper-spec)
+
+## Routing Spec
+Routing specs are marked by ```type: :routing``` or if you have set
+config.infer_spec_type_from_file_location! by placing them in spec/routing.
+
+Simple apps with nothing but standard RESTful routes won't get much value from
+routing specs, but they can provide significant value when used to specify
+customized routes, like vanity links, slugs, etc.
+
+```ruby
+expect(get: "/articles/2019/01/when-to-use-routing-specs").to route_to(
+  controller: "articles",
+  month: "2019-01",
+  slug: "when-to-use-routing-specs"
+)
+```
+[Documentation](https://relishapp.com/rspec/rspec-rails/docs/routing-specs)
+
+## Work with Factories
+For factories creation within Rails projects we use [factory_bot](https://github.com/thoughtbot/factory_bot)
+
+
+[Factory Bot](https://github.com/thoughtbot/factory_bot) is a fixtures replacement with a straightforward definition syntax, support for multiple build strategies (saved instances, unsaved instances, attribute hashes, and stubbed objects), and support for multiple factories for the same class (user, admin_user, and so on), including factory inheritance.
 
 ```ruby
 factory :lead do
