@@ -268,7 +268,7 @@ rake parallel:test    --> got 4 CPUs? --> 26 seconds
 - [Shoulda Matchers](https://www.rubydoc.info/github/thoughtbot/shoulda-matchers/master/frames)
 
 ## License
-rspec-best-practices is Copyright © 2015-2018 Codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).
+rspec-best-practices is Copyright © 2015-2019 Codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## About Codica
 
